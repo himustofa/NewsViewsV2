@@ -5,8 +5,9 @@ import android.content.SharedPreferences;
 
 public class SharedPrefManager {
 
-    private static final String SHARED_PREF_NAME = "FCMSharedPref";
-    private static final String TAG_TOKEN = "tagtoken";
+    private static final String SHARED_PREF_NAME = "userLoginInfo";
+    private static final String USER_EMAIL = "email";
+    private static final String USER_IS_LOGGED = "isLoggedIn";
 
     private static SharedPrefManager mInstance;
     private static Context mCtx;
@@ -23,18 +24,19 @@ public class SharedPrefManager {
     }
 
     //===============================================| Save SharedPreferences
-    public boolean saveDeviceToken(String token){
+    public boolean saveSharedPref(String email, boolean isLogged){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(TAG_TOKEN, token);
+        editor.putString(USER_EMAIL, email);
+        editor.putBoolean(USER_IS_LOGGED, isLogged);
         editor.apply();
         return true;
     }
 
     //===============================================| Fetch/Get SharedPreferences
-    public String getDeviceToken(){
+    public String getSharedPref(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return  sharedPreferences.getString(TAG_TOKEN, null);
+        return  sharedPreferences.getString(USER_EMAIL, null);
     }
 
     //===============================================| Remove SharedPreferences
