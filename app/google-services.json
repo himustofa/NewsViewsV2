@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "77048187407",
+    "firebase_url": "https://newsviews-a2261.firebaseio.com",
+    "project_id": "newsviews-a2261",
+    "storage_bucket": "newsviews-a2261.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77048187407:android:db6130f856a50838",
+        "android_client_info": {
+          "package_name": "com.apps.newsviews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "77048187407-9q6248rfrv5j6pdhke4qsahhec994fa8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlwASw-Yfsd43cIgcA6AtW4imI6BBciPY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

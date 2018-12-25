@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">NewsViews</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
+    <!-- Alert Dialog -->
+    <string name="network_unavailable">Network connection is not available</string>
+    <string name="try_again">Try Again</string>
+    <string name="alert_title">Alert</string>
+    <string name="alert_about">About</string>
+    <string name="alert_ok">OK</string>
+
+    <!-- ProgressDialog -->
+    <string name="loading_title">Loading</string>
+    <string name="loading">Wait while loading...</string>
+    <string name="progress_img">Image loading...</string>
+    <string name="progress">Please wait...</string>
+
+    <!-- SplashScreenActivity -->
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+    <string name="play_again">Play Again</string>
+
+    <!-- Logging Activity -->
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up_via_gmail">No account? Sign up via Gmail</string>
+
+    <string name="apps_details">
+        NewsViews
+        \nApps Version: 1.0
+        \nDeveloped by Mustofa Kamal
+    </string>
 </resources>
