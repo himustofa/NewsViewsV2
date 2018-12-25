@@ -1,21 +1,34 @@
 package com.apps.newsviews.model;
 
-public class NewsModel {
+import com.google.gson.annotations.SerializedName;
 
-    private String name;
+public class ArticleModel {
+
+    @SerializedName("source")
+    private SourceModel source;
+
+    @SerializedName("author")
     private String author;
+
+    @SerializedName("title")
     private String title;
+
+    @SerializedName("description")
     private String description;
+
+    @SerializedName("url")
     private String url;
+
+    @SerializedName("urlToImage")
     private String urlToImage;
+
+    @SerializedName("publishedAt")
     private String publishedAt;
+
+    @SerializedName("content")
     private String content;
 
-    public NewsModel() {
-    }
-
-    public NewsModel(String name, String author, String title, String description, String url, String urlToImage, String publishedAt, String content) {
-        this.name = name;
+    public ArticleModel(String author, String title, String description, String url, String urlToImage, String publishedAt, String content) {
         this.author = author;
         this.title = title;
         this.description = description;
@@ -25,12 +38,12 @@ public class NewsModel {
         this.content = content;
     }
 
-    public String getName() {
-        return name;
+    public SourceModel getSource() {
+        return source;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSource(SourceModel source) {
+        this.source = source;
     }
 
     public String getAuthor() {

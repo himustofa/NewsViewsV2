@@ -1,14 +1,17 @@
 package com.apps.newsviews.retrofit;
 
-import okhttp3.ResponseBody;
+import com.apps.newsviews.model.ArticleModel;
+import com.apps.newsviews.model.ResponseModel;
+
+import java.util.ArrayList;
+
 import retrofit2.Call;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.POST;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface Api {
 
-    @FormUrlEncoded
+    /*@FormUrlEncoded
     @POST //@POST("create"): Url end point
     Call<ResponseBody> mCreate(
             @Field("name") String name,
@@ -19,5 +22,8 @@ public interface Api {
             @Field("urlToImage") String urlToImage,
             @Field("publishedAt") String publishedAt,
             @Field("content") String content
-    );
+    );*/;
+
+    @GET("everything")
+    Call<ResponseModel> getNews(@Query("q") String q, @Query("from") String from, @Query("sortBy") String sortBy, @Query("apiKey") String apiKey);
 }
