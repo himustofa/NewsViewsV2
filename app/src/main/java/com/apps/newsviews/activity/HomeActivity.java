@@ -1,4 +1,4 @@
-package com.apps.newsviews;
+package com.apps.newsviews.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -17,12 +17,11 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.apps.newsviews.activity.LoginActivity;
+import com.apps.newsviews.R;
 import com.apps.newsviews.model.ArticleModel;
 import com.apps.newsviews.model.ResponseModel;
 import com.apps.newsviews.retrofit.RetrofitClient;
@@ -50,8 +49,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView.Adapter adapter;
     private ArrayList<ArticleModel> articleList;
     private ProgressDialog progress;
-
-    //private static final String API_KEY = "9688fe5fdd5148c4bcee81fcf94e1837";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +109,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         articleList.clear();
 
-        Call<ResponseModel> call = RetrofitClient.getInstance().getApi().getNews("bitcoin", "2018-11-25", "publishedAt", "9688fe5fdd5148c4bcee81fcf94e1837");
+        Call<ResponseModel> call = RetrofitClient.getInstance().getApi().getNews(ConstantKey.COIN, ConstantKey.DATE, ConstantKey.SORT, ConstantKey.API);
         call.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
