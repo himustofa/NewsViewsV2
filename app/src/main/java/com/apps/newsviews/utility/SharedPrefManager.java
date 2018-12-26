@@ -34,7 +34,12 @@ public class SharedPrefManager {
     }
 
     //===============================================| Fetch/Get SharedPreferences
-    public String getSharedPref(){
+    public boolean getSharedPrefIsLoggedIn(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return  sharedPreferences.getBoolean(USER_IS_LOGGED, false);
+    }
+
+    public String getSharedPrefEmail(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return  sharedPreferences.getString(USER_EMAIL, null);
     }

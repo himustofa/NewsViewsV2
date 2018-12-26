@@ -2,28 +2,39 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_news_model"
+    android:layout_marginBottom="25dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.v7.widget.CardView
         android:elevation="4dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical"
             android:padding="15dp"
             android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
             <ImageView
                 android:id="@+id/layout_url_to_image"
                 android:src="@drawable/ic_launcher_foreground"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="200dp" />
             <TextView
+                android:text="Author:"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
                 android:id="@+id/layout_author"
                 android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="Title:"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
@@ -32,13 +43,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
+                android:text="Description:"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
                 android:id="@+id/layout_description"
                 android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
+                android:visibility="gone"
                 android:id="@+id/layout_url"
                 android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="Published At:"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
@@ -47,6 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
+                android:visibility="gone"
                 android:id="@+id/layout_content"
                 android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"

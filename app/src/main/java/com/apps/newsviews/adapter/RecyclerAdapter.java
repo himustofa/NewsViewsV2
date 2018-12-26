@@ -1,7 +1,11 @@
 package com.apps.newsviews.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,10 +14,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.apps.newsviews.R;
+import com.apps.newsviews.activity.WebViewActivity;
 import com.apps.newsviews.model.ArticleModel;
+import com.apps.newsviews.utility.ConstantKey;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -39,8 +44,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final ArticleModel model = arrayList.get(position);
 
-        Log.d("Author", ""+model.getAuthor());
-
         holder.layoutAuthor.setText(model.getAuthor());
         holder.layoutTitle.setText(model.getTitle());
         holder.layoutDescription.setText(model.getDescription());
@@ -48,13 +51,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.layoutPublishedAt.setText(model.getPublishedAt());
         holder.layoutContent.setText(model.getContent());
 
-        //Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(imageView);
         Picasso.get().load(model.getUrlToImage()).into(holder.layoutUrlToImage);
 
         holder.layoutNewsModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "You clicked "+model.getAuthor(), Toast.LENGTH_SHORT).show();
+                alertDialog(v, model.getTitle(), model.getUrl());
+                //Toast.makeText(context, "You clicked "+model.getAuthor(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -89,5 +92,47 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
             layoutNewsModel = (LinearLayout) itemView.findViewById(R.id.layout_news_model);
         }
+    }
+
+    //====================================================| Alert Message
+    public void alertDialog(final View v, final String msg, final String url) {
+        new AlertDialog.Builder(v.getRootView().getContext())
+                .setTitle(R.string.alert_open_web)
+                .setMessage(msg)
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        new AlertDialog.Builder(v.getRootView().getContext())
+                                .setTitle(R.string.alert_open_browser)
+                                .setMessage(msg)
+                                .setCancelable(false)
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int i) {
+                                        /*if (!url.startsWith("http://") && !url.startsWith("https://"))
+                                            url = "http://" + url;*/
+                                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                                        context.startActivity(browserIntent);
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(context, WebViewActivity.class);
+                                        intent.putExtra(ConstantKey.WEB_URL, url);
+                                        context.startActivity(intent);
+                                        dialog.dismiss();
+                                    }
+                                }).show();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
     }
 }

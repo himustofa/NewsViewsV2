@@ -19,7 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.apps.newsviews.R;
-import com.apps.newsviews.utility.PreferenceManager;
+import com.apps.newsviews.utility.SplashPrefManager;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -29,7 +29,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
-    private PreferenceManager prefManager;
+    private SplashPrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         //===============================================| Checking for first time launch - before calling setContentView()
-        prefManager = new PreferenceManager(this);
+        prefManager = new SplashPrefManager(this);
         if (!prefManager.isFirstTimeLaunch()) {
             launchHomeScreen();
             finish();

@@ -3,7 +3,7 @@ package com.apps.newsviews.utility;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class PreferenceManager {
+public class SplashPrefManager {
 
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
@@ -13,7 +13,7 @@ public class PreferenceManager {
     private static final String PREF_NAME = "intro_slider";
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 
-    public PreferenceManager(Context context) {
+    public SplashPrefManager(Context context) {
         this.context = context;
         pref = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();

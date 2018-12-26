@@ -9,6 +9,16 @@
     <string name="alert_title">Alert</string>
     <string name="alert_about">About</string>
     <string name="alert_ok">OK</string>
+    <string name="alert_open_web">Open with WebView?</string>
+    <string name="alert_open_browser">Open with Browser?</string>
+    <string name="apps_details">
+        NewsViews
+        \nApps Version: 1.0
+        \nDeveloped by Mustofa Kamal
+        \n
+        \nCopyright © 2018 NewsViews.com
+        \nAll rights reserved
+    </string>
 
     <!-- ProgressDialog -->
     <string name="loading_title">Loading</string>
@@ -26,11 +36,105 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="log_in">Log In</string>
-    <string name="sign_up_via_gmail">No account? Sign up via Gmail</string>
+    <string name="sign_up">No account? Registration via Email</string>
 
-    <string name="apps_details">
-        NewsViews
-        \nApps Version: 1.0
-        \nDeveloped by Mustofa Kamal
+    <!-- Splash Screen Activity -->
+    <string name="mailing_title">Mailing Address:</string>
+    <string name="designation">Full Stack Java Programmer</string>
+    <string name="name">MUSTOFA KAMAL</string>
+    <string name="mailing_address">
+        C.B. 13/2, Kachukhet
+        \nDhaka Cantonment, Dhaka-1206
+        \nE-mail: mustofa2008@gmail.com
+        \nOCJP: youracclaim.com/users/hikamal
+        \nMobile: +88 01914141707
     </string>
+    <string name="summary_title">SUMMARY</string>
+    <string name="summary">
+        • Within 3 years of job experience, 2 years in Web Enterprise applications and Android apps and 1+ year in Graphics Design.
+        \n• Job and hands-on experience in JavaScript, jQuery, AngularJS, Core Java, Advance Java, JDBC, Android Application, Oracle, MySQL, PostgreSQL and Java Frameworks such as Spring, Hibernate.
+        \n• Having knowledge of scripting tools like JIRA and MAVEN and vast experience in using version controlling system (GIT).
+        \n• Excellent knowledge in Graphics Design and Web Page Design, Photoshop, InDesign, Illustrator, Prototyping.
+    </string>
+    <string name="experience_title">PROFESSIONAL EXPERIENCE</string>
+    <string name="experience">
+        Programmer
+        \nADROIT Corporation
+        \n2018-07 - Continuing
+        \n• Designing and developing applications for the Android platform
+        \n• Web developing and designing for the Java platform
+        \n
+        \nJr. Programmer
+        \nCtrends Software and Services Ltd
+        \n2017-03 – 2018-06
+        \n• Design and implement in human resources module and treasury module of EBS(Enterprise Business Solutions) using Java architecture
+        \n• Follow the process of workflow, master details and security
+        \n• Creating reports using iReport, HTML, graphical and representation charts
+        \n• Integration of 3rd party api’s like Google maps, webrtc, bulk upload, propagate update
+        \n• Writing Unit tests and integration test using test driven development (TDD) process
+        \n• Follow the agile-scrum, trello and slack
+        \n
+        \n<b>Graphics Designer</b>
+        \nADROIT Corporation
+        \n2009-01 - 2010-03 *
+        \n• Thinking creatively to produce new ideas and concepts and developing interactive design
+        \n• Develop graphics for product illustrations, logos, letterheads, business cards, magazines, books, catalogs, banners design and websites
+        \n• Select colors, images, text style, and layout
+        \n• Incorporate changes recommended by the clients into the final design
+        \n• Work as part of a team with copywriters, designers, stylists, executives etc.
+    </string>
+    <string name="app_about">
+        Rokomari Twenty-20 Android Hunt
+        \nProject: News Views v2.0.0
+        \n22 December, 2018
+    </string>
+    <string name="projects_title">PROJECTS</string>
+    <string name="projects">
+        • TO-LET
+        \nAndroid mobile application for the searching apartments, houses, offices as a renter and posting the ad as an owner and communication with each other.
+        \nUsed Technologies: Java, SQLite, Google Maps, PHP and MySQL
+        \nLink: https://github.com/himustofa/TO-LET
+        \n
+        \n• Ahle Bayat
+        \nAndroid mobile application for the representing Islamic activities like Mufil, Islamic Video, Message promotion, even direct broadcaster video etc.
+        \nUsed Technologies: Java, SQLite, Google Maps, PHP and MySQL
+        \nLink: https://play.google.com/store/apps/details?id=shahadat_e_karbala.com.shahadatekarbala
+        \n
+        \n• Sales Management
+        \nAndroid mobile application for the sole trader ship business. Including user, company profile, suppliers, products, purchases, customers and sales.
+        \nUsed Technologies: Java, MPAndroidChart, MVC Design Pattern and SQLite
+        \nLink: https://github.com/himustofa/SalesManagement
+        \n
+        \n• Sales Management
+        \nWeb-based application for the sole trader ship business. Including user, company profile, suppliers, products, purchases, customers and sales.
+        \nUsed Technologies: HTML, CSS, Bootstrap, JavaScript, jQuery, JSP, RESTful Web Service, Java, Spring, Hibernate and PostgreSQL
+        \nLink: https://github.com/himustofa/Sales-Management
+        \n
+        \n• Accounting Management
+        \nGroup Project (Team Leader): Web based accounting solution for the sole trader ship business.
+        \nUsed Technologies: JSP, AngularJS, RESTful Web Service, Java, Spring, Hibernate, Jasper iReport, MySQL, CSS and Bootstrap
+        \n
+        \n• Simple Accounting Management
+        \nWeb based accounting solution
+        \nUsed Technologies: JSP, AngularJS, RESTful Web Service, Java, MySQL, CSS and Bootstrap
+        \nLink: https://github.com/himustofa/Expenses
+        \n
+        \n• Health Information
+        \nInformation about mother and child related of health in this project. Also information about clinic health center, contacts doctors and conversation with women forum.
+        \nUsed Technologies: JSP, Java, MySQL, PrimeFaces, CSS and Bootstrap
+        \nLink: http://supermombd.com/
+        \n
+        \n• Dictionary
+        \nFinding words with its meaning and storing database
+        \nUsed Technologies: Android, SQLite
+        \nLink: https://github.com/himustofa/CSEDictionary
+        \n
+        \n• Cash Memo
+        \nDesktop solution through data insertion, updating, deleting and searching
+        \nUsed Technologies: Java Swing, MySQL
+        \nLink: https://github.com/himustofa/CashMemo
+    </string>
+
+    <!-- Display Activity -->
+    <string name="number_api_title">Numbers API</string>
 </resources>

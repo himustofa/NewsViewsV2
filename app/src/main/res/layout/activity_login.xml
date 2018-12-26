@@ -46,9 +46,17 @@
         android:id="@+id/registration"
         android:clickable="true"
         android:focusable="true"
-        android:text="@string/sign_up_via_gmail"
+        android:text="@string/sign_up"
         android:textAlignment="center"
+        android:layout_marginBottom="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/gmail_login_button"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.google.android.gms.common.SignInButton>
 
 </LinearLayout>

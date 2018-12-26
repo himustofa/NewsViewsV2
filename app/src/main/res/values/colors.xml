@@ -6,6 +6,11 @@
     <color name="whiteColor">#ffffff</color>
     <color name="blackColor">#000000</color>
 
+    <color name="darkGreyColor">#444444</color>
+    <color name="deepGreyColor">#a3a3a3</color>
+    <color name="mediumGreyColor">#e5e5e5</color>
+    <color name="lightGreyColor">#f2f2f2</color>
+
     <array name="array_dot_active">
         <item>#008577</item>
         <item>#008577</item>
