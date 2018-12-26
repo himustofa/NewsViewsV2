@@ -147,6 +147,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         itemSearch = (EditText) findViewById(R.id.search_button);
         go = (Button) findViewById(R.id.search_go);
 
+        //====================================================| Number API Call
         go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
