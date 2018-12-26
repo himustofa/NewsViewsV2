@@ -18,7 +18,6 @@
             android:layout_height="match_parent">
             <ImageView
                 android:id="@+id/layout_url_to_image"
-                android:src="@drawable/ic_launcher_foreground"
                 android:layout_marginBottom="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="200dp" />

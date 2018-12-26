@@ -58,13 +58,13 @@
     </string>
     <string name="experience_title">PROFESSIONAL EXPERIENCE</string>
     <string name="experience">
-        Programmer
+        <b>Programmer</b>
         \nADROIT Corporation
         \n2018-07 - Continuing
         \n• Designing and developing applications for the Android platform
         \n• Web developing and designing for the Java platform
         \n
-        \nJr. Programmer
+        \n<b>Jr. Programmer</b>
         \nCtrends Software and Services Ltd
         \n2017-03 – 2018-06
         \n• Design and implement in human resources module and treasury module of EBS(Enterprise Business Solutions) using Java architecture
@@ -90,46 +90,46 @@
     </string>
     <string name="projects_title">PROJECTS</string>
     <string name="projects">
-        • TO-LET
+        • <b>TO-LET</b>
         \nAndroid mobile application for the searching apartments, houses, offices as a renter and posting the ad as an owner and communication with each other.
         \nUsed Technologies: Java, SQLite, Google Maps, PHP and MySQL
         \nLink: https://github.com/himustofa/TO-LET
         \n
-        \n• Ahle Bayat
+        \n• <b>Ahle Bayat</b>
         \nAndroid mobile application for the representing Islamic activities like Mufil, Islamic Video, Message promotion, even direct broadcaster video etc.
         \nUsed Technologies: Java, SQLite, Google Maps, PHP and MySQL
         \nLink: https://play.google.com/store/apps/details?id=shahadat_e_karbala.com.shahadatekarbala
         \n
-        \n• Sales Management
+        \n• <b>Sales Management</b>
         \nAndroid mobile application for the sole trader ship business. Including user, company profile, suppliers, products, purchases, customers and sales.
         \nUsed Technologies: Java, MPAndroidChart, MVC Design Pattern and SQLite
         \nLink: https://github.com/himustofa/SalesManagement
         \n
-        \n• Sales Management
+        \n• <b>Sales Management</b>
         \nWeb-based application for the sole trader ship business. Including user, company profile, suppliers, products, purchases, customers and sales.
         \nUsed Technologies: HTML, CSS, Bootstrap, JavaScript, jQuery, JSP, RESTful Web Service, Java, Spring, Hibernate and PostgreSQL
         \nLink: https://github.com/himustofa/Sales-Management
         \n
-        \n• Accounting Management
+        \n• <b>Accounting Management</b>
         \nGroup Project (Team Leader): Web based accounting solution for the sole trader ship business.
         \nUsed Technologies: JSP, AngularJS, RESTful Web Service, Java, Spring, Hibernate, Jasper iReport, MySQL, CSS and Bootstrap
         \n
-        \n• Simple Accounting Management
+        \n• <b>Simple Accounting Management</b>
         \nWeb based accounting solution
         \nUsed Technologies: JSP, AngularJS, RESTful Web Service, Java, MySQL, CSS and Bootstrap
         \nLink: https://github.com/himustofa/Expenses
         \n
-        \n• Health Information
+        \n• <b>Health Information</b>
         \nInformation about mother and child related of health in this project. Also information about clinic health center, contacts doctors and conversation with women forum.
         \nUsed Technologies: JSP, Java, MySQL, PrimeFaces, CSS and Bootstrap
         \nLink: http://supermombd.com/
         \n
-        \n• Dictionary
+        \n• <b>Dictionary</b>
         \nFinding words with its meaning and storing database
         \nUsed Technologies: Android, SQLite
         \nLink: https://github.com/himustofa/CSEDictionary
         \n
-        \n• Cash Memo
+        \n• <b>Cash Memo</b>
         \nDesktop solution through data insertion, updating, deleting and searching
         \nUsed Technologies: Java Swing, MySQL
         \nLink: https://github.com/himustofa/CashMemo
