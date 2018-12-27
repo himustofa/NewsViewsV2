@@ -118,7 +118,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
+        startActivity(new Intent(SplashScreenActivity.this, SplashScreen2Activity.class));
         finish();
     }
 
