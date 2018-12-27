@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,10 @@ import com.apps.newsviews.model.ArticleModel;
 import com.apps.newsviews.utility.ConstantKey;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
@@ -39,7 +41,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_layout, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_layout, parent, false);
         return new ViewHolder(v);
     }
 
@@ -91,8 +93,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
             layoutAuthor = (TextView) itemView.findViewById(R.id.layout_author);
             layoutTitle = (TextView) itemView.findViewById(R.id.layout_title);
-            layoutUrl = (TextView) itemView.findViewById(R.id.layout_description);
-            layoutDescription = (TextView) itemView.findViewById(R.id.layout_url);
+            layoutDescription = (TextView) itemView.findViewById(R.id.layout_description);
+            layoutUrl = (TextView) itemView.findViewById(R.id.layout_url);
             layoutPublishedAt = (TextView) itemView.findViewById(R.id.layout_published_at);
             layoutContent = (TextView) itemView.findViewById(R.id.layout_content);
 
@@ -108,6 +110,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             viewToAnimate.startAnimation(animation);
             lastPosition = position;
         }
+    }
+
+    //====================================================| Date Format
+    public String dateFormatFromTimestamp(String input) {
+        DateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+        java.sql.Timestamp ts = java.sql.Timestamp.valueOf(input);
+        Date date = new Date(ts.getTime());
+        return String.valueOf(sdf.format(date));
     }
 
     //====================================================| Alert Message
