@@ -40,6 +40,7 @@ import com.apps.newsviews.retrofit.RetrofitClient;
 import com.apps.newsviews.utility.ConstantKey;
 import com.apps.newsviews.adapter.RecyclerAdapter;
 import com.apps.newsviews.utility.SharedPrefManager;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -73,6 +74,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //context = this;
         mProgress = new ProgressDialog(this);
+        mProgress.setMessage(HomeActivity.this.getString(R.string.progress));
+        mProgress.show();
+
         mArticleList = new ArrayList<>();
 
         //===============================================| Getting SharedPreferences
@@ -115,9 +119,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //mRecyclerView.setHasFixedSize(true);
         //mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        startRecycler();
-
-
         //====================================================| Custom adapter search
         /*itemSearch = (EditText) findViewById(R.id.customer_search);
         itemSearch.addTextChangedListener(new TextWatcher() {
@@ -141,7 +142,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             public void afterTextChanged(Editable s) {}
         });*/
 
-        numberButton = (ImageButton) findViewById(R.id.number_button);
+        //numberButton = (ImageButton) findViewById(R.id.number_button);
         dateButton = (ImageButton) findViewById(R.id.date_button);
         refreshButton = (ImageButton) findViewById(R.id.refresh_button);
         itemSearch = (EditText) findViewById(R.id.search_button);
@@ -177,28 +178,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-    //====================================================| Search using date
-    private void searchDate() {
-        picker = new DatePicker(this);
-        int curYear = picker.getYear();
-        int curMonth = picker.getMonth()+1;
-        int curDayOfMonth = picker.getDayOfMonth();
-        DatePickerDialog pickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                itemSearch.setText(dayOfMonth+"/"+(month+1)); //dayOfMonth+"/"+(month+1)+"/"+year
-            }
-        }, curYear, curMonth, curDayOfMonth);
-        pickerDialog.show();
-    }
-
     //====================================================| Call API and Displaying data in RecyclerAdapter
-    public void startRecycler() {
+    @Override
+    protected void onStart() {
+        super.onStart();
+        /*for (int i=0; i<=100; i++) {
+            mArticleList.add(new ArticleModel("Author", "Title", "Description", "https://www.google.com/", "http://freakonomics.com/wp-content/uploads/2016/05/PC-Games-300x225.jpg", "PublishedAt", "Content"));
+        }*/
 
-        mProgress.setMessage("Please wait..."); //context.getString(R.string.progress)
-        mProgress.show();
-
-        //articleList.clear();
+        mArticleList.clear();
 
         Call<ResponseModel> call = RetrofitClient.getInstance().getApi().getNews(ConstantKey.COIN, ConstantKey.DATE, ConstantKey.SORT, ConstantKey.API);
         call.enqueue(new Callback<ResponseModel>() {
@@ -206,12 +194,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 if(response.body().getStatus().equals("ok")) {
                     ArrayList<ArticleModel> list = response.body().getArticles();
-                    if(list.size()>0) {
-                        //for (int i=0; i<articleModels.size(); i++) {}
-                        for (ArticleModel m: list) {
-                            Log.d(TAG, "Author: "+m.getAuthor());
-                            mArticleList.add(new ArticleModel(m.getAuthor(),m.getTitle(),m.getDescription(),m.getUrl(),m.getUrlToImage(),m.getPublishedAt(),m.getContent()));
-                        }
+                    Log.d(TAG, new Gson().toJson(response.body().getArticles()));
+                    if(list.size() > 0) {
+                        mAdapter = new RecyclerAdapter(HomeActivity.this, response.body().getArticles());
+                        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                        mRecyclerView.setAdapter(mAdapter);
+                        mProgress.dismiss();
                     }
                 }
             }
@@ -222,15 +210,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+    }
 
-        /*for (int i=0; i<=10; i++) {
-            articleList.add(new ArticleModel("Name", "Author", "Title", "Description", "Url", "UrlToImage", "PublishedAt", "Content"));
-        }*/
-        mAdapter = new RecyclerAdapter(HomeActivity.this, mArticleList);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(mAdapter);
-
-        mProgress.dismiss();
+    //====================================================| Search using date
+    private void searchDate() {
+        picker = new DatePicker(this);
+        int curYear = picker.getYear();
+        int curMonth = picker.getMonth()+1;
+        int curDayOfMonth = picker.getDayOfMonth();
+        DatePickerDialog pickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                itemSearch.setText((month+1)+"/"+dayOfMonth); //dayOfMonth+"/"+(month+1)+"/"+year
+            }
+        }, curYear, curMonth, curDayOfMonth);
+        pickerDialog.show();
     }
 
     //====================================================| Back press disabled and OptionsMenu
