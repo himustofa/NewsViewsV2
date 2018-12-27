@@ -26,4 +26,7 @@ public interface Api {
 
     @GET("everything")
     Call<ResponseModel> getNews(@Query("q") String q, @Query("from") String from, @Query("sortBy") String sortBy, @Query("apiKey") String apiKey);
+
+    @GET("top-headlines")
+    Call<ResponseModel> getBbcNews(@Query("sources") String src, @Query("apiKey") String key);
 }
