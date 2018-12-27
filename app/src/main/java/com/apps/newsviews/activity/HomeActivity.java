@@ -201,7 +201,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //mArticleList.add(new ArticleModel("Author", "Title", "Description", "https://www.google.com/", "http://freakonomics.com/wp-content/uploads/2016/05/PC-Games-300x225.jpg", "PublishedAt", "Content"));
 
-        Call<ResponseModel> call = RetrofitClient.getInstance().getApi().getBbcNews(ConstantKey.SOURCE, ConstantKey.API);
+        Call<ResponseModel> call = RetrofitClient.getInstance().getApi().getNews(ConstantKey.COIN, ConstantKey.DATE, ConstantKey.SORT, ConstantKey.API);
+        //Call<ResponseModel> call = RetrofitClient.getInstance().getApi().getBbcNews(ConstantKey.SOURCE, ConstantKey.API);
         call.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
