@@ -31,14 +31,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageButton
+                <!--<ImageButton
                     android:id="@+id/number_button"
                     android:layout_toLeftOf="@+id/date_button"
                     android:src="@drawable/ic_format_list_numbered_black_24dp"
                     android:background="@null"
                     android:layout_marginRight="10dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content" />-->
                 <ImageButton
                     android:id="@+id/date_button"
                     android:layout_toLeftOf="@+id/refresh_button"
@@ -61,7 +61,7 @@
             android:layout_below="@+id/toolbar"
             android:weightSum="100"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_width="match_parent"
