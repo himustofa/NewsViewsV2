@@ -40,7 +40,13 @@
 
     <!-- Splash Screen Activity -->
     <string name="mailing_title">Mailing Address:</string>
-    <string name="designation">Full Stack Java Programmer</string>
+    <string name="designation">
+        Full Stack Java Programmer
+        \n
+        \n+8801914141707
+        \nmustofa2008@gmail.com
+        \nKachukhet, Dhaka Cantonment
+    </string>
     <string name="name">MUSTOFA KAMAL</string>
     <string name="mailing_address">
         C.B. 13/2, Kachukhet
@@ -51,10 +57,10 @@
     </string>
     <string name="summary_title">SUMMARY</string>
     <string name="summary">
-        • Within 3 years of job experience, 2 years in Web Enterprise applications and Android apps and 1+ year in Graphics Design.
-        \n• Job and hands-on experience in JavaScript, jQuery, AngularJS, Core Java, Advance Java, JDBC, Android Application, Oracle, MySQL, PostgreSQL and Java Frameworks such as Spring, Hibernate.
-        \n• Having knowledge of scripting tools like JIRA and MAVEN and vast experience in using version controlling system (GIT).
-        \n• Excellent knowledge in Graphics Design and Web Page Design, Photoshop, InDesign, Illustrator, Prototyping.
+        Within 3 years of job experience, 2 years in Web Enterprise applications and Android apps and 1+ year in Graphics Design.
+        \nJob and hands-on experience in Android Application, Core Java, Advance Java, Spring, Hibernate, SQL and JavaScript, jQuery, AngularJS.
+        <!--\n• Having knowledge of scripting tools like JIRA and MAVEN and vast experience in using version controlling system (GIT).
+        \n• Excellent knowledge in Graphics Design and Web Page Design, Photoshop, InDesign, Illustrator, Prototyping.-->
     </string>
     <string name="experience_title">PROFESSIONAL EXPERIENCE</string>
     <string name="experience">
@@ -73,7 +79,7 @@
         \n• Integration of 3rd party api’s like Google maps, webrtc, bulk upload, propagate update
         \n• Writing Unit tests and integration test using test driven development (TDD) process
         \n• Follow the agile-scrum, trello and slack
-        \n
+        <!--\n
         \n<b>Graphics Designer</b>
         \nADROIT Corporation
         \n2009-01 - 2010-03 *
@@ -81,7 +87,7 @@
         \n• Develop graphics for product illustrations, logos, letterheads, business cards, magazines, books, catalogs, banners design and websites
         \n• Select colors, images, text style, and layout
         \n• Incorporate changes recommended by the clients into the final design
-        \n• Work as part of a team with copywriters, designers, stylists, executives etc.
+        \n• Work as part of a team with copywriters, designers, stylists, executives etc.-->
     </string>
     <string name="app_about">
         Rokomari Twenty-20 Android Hunt
@@ -90,6 +96,26 @@
     </string>
     <string name="projects_title">PROJECTS</string>
     <string name="projects">
+        • <b>eRide</b>
+        \nIt is a ridesharing android app for fast, reliable rides. You can reach your destination by using this app.
+        \n
+        \n• <b>TO-LET</b>
+        \nAndroid app for the searching apartments, houses, offices as a renter and posting the ad as an owner and communication with each other.
+        \nhttps://github.com/himustofa/TO-LET
+        \n
+        \n• <b>Ahle Bayat</b>
+        \nAndroid app for the representing Islamic activities like Mufil, Islamic Video, promotion, broadcaster video etc.
+        \nhttps://play.google.com/store/apps/details?id=shahadat_e_karbala.com.shahadatekarbala
+        \n
+        \n• <b>Sales Management</b>
+        \nAndroid app for the sole trader ship business. Including user, company profile, suppliers, products, purchases, customers and sales.
+        \nhttps://github.com/himustofa/SalesManagement
+
+        <!--• <b>eRide</b>
+        \nIt is a ridesharing android app for fast, reliable rides. You can reach your destination by using this app.
+        \nDeveloped Process: Running
+        \nUsed Technologies: Java, SQLite, Google Maps, Firebase, PHP and MySQL
+        \n
         • <b>TO-LET</b>
         \nAndroid mobile application for the searching apartments, houses, offices as a renter and posting the ad as an owner and communication with each other.
         \nUsed Technologies: Java, SQLite, Google Maps, PHP and MySQL
@@ -132,7 +158,7 @@
         \n• <b>Cash Memo</b>
         \nDesktop solution through data insertion, updating, deleting and searching
         \nUsed Technologies: Java Swing, MySQL
-        \nLink: https://github.com/himustofa/CashMemo
+        \nLink: https://github.com/himustofa/CashMemo-->
     </string>
 
     <!-- Display Activity -->
