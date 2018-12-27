@@ -96,18 +96,18 @@
     </string>
     <string name="projects_title">PROJECTS</string>
     <string name="projects">
-        • <b>eRide</b>
+        <b>eRide</b>
         \nIt is a ridesharing android app for fast, reliable rides. You can reach your destination by using this app.
         \n
-        \n• <b>TO-LET</b>
+        \n<b>TO-LET</b>
         \nAndroid app for the searching apartments, houses, offices as a renter and posting the ad as an owner and communication with each other.
         \nhttps://github.com/himustofa/TO-LET
         \n
-        \n• <b>Ahle Bayat</b>
+        \n<b>Ahle Bayat</b>
         \nAndroid app for the representing Islamic activities like Mufil, Islamic Video, promotion, broadcaster video etc.
         \nhttps://play.google.com/store/apps/details?id=shahadat_e_karbala.com.shahadatekarbala
         \n
-        \n• <b>Sales Management</b>
+        \n<b>Sales Management</b>
         \nAndroid app for the sole trader ship business. Including user, company profile, suppliers, products, purchases, customers and sales.
         \nhttps://github.com/himustofa/SalesManagement
 
