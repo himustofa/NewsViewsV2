@@ -26,6 +26,8 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -34,6 +36,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apps.newsviews.R;
+import com.apps.newsviews.history.HistoryModel;
+import com.apps.newsviews.history.HistoryService;
 import com.apps.newsviews.model.ArticleModel;
 import com.apps.newsviews.model.ResponseModel;
 import com.apps.newsviews.retrofit.RetrofitClient;
@@ -58,6 +62,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private Activity context;
     private String userEmail;
     private EditText itemSearch;
+    AutoCompleteTextView searchAuto;
     private DatePicker picker;
     private ImageButton numberButton, dateButton, refreshButton;
     private Button go;
@@ -66,6 +71,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView.Adapter mAdapter;
     private ArrayList<ArticleModel> mArticleList;
     private ProgressDialog mProgress;
+
+    private HistoryService historyService;
+    private ArrayList<HistoryModel> historyList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +85,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         mProgress.setMessage(HomeActivity.this.getString(R.string.progress));
         mProgress.show();
 
+        this.historyService = new HistoryService(this); //To get from service
+
         mArticleList = new ArrayList<>();
+        try {
+            historyList = (ArrayList) historyService.getAllData();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         //===============================================| Getting SharedPreferences
         userEmail = SharedPrefManager.getInstance(HomeActivity.this).getSharedPrefEmail();
@@ -119,45 +134,30 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //mRecyclerView.setHasFixedSize(true);
         //mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //====================================================| Custom adapter search
-        /*itemSearch = (EditText) findViewById(R.id.customer_search);
-        itemSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override
-            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
-                int textlength = cs.length();
-                ArrayList<ArticleModel> tempArrayList = new ArrayList<ArticleModel>();
-                for(ArticleModel c: mArticleList){
-                    if (textlength <= c.getAuthor().length()) {
-                        if (c.getAuthor().toLowerCase().contains(cs.toString().toLowerCase())) {
-                            tempArrayList.add(c);
-                        }
-                    }
-                }
-                mAdapter = new RecyclerAdapter(HomeActivity.this, mArticleList);
-                mRecyclerView.setAdapter(mAdapter);
-            }
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });*/
 
         //numberButton = (ImageButton) findViewById(R.id.number_button);
         dateButton = (ImageButton) findViewById(R.id.date_button);
         refreshButton = (ImageButton) findViewById(R.id.refresh_button);
         itemSearch = (EditText) findViewById(R.id.search_button);
+        searchAuto = (AutoCompleteTextView) findViewById(R.id.search_button);
         go = (Button) findViewById(R.id.search_go);
+
 
         //====================================================| Number API Call
         go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String value = itemSearch.getText().toString().trim();
+                String value = searchAuto.getText().toString().trim();
                 if (!TextUtils.isEmpty(value)) {
                     Intent intent = new Intent(HomeActivity.this, DisplayActivity.class);
                     intent.putExtra(ConstantKey.NUMBER_API_RESULT_KEY, value);
                     startActivity(intent);
                     //finish();
+
+                    long data = HomeActivity.this.historyService.addData(new HistoryModel(value));
+                    if (data > 0){
+                        Toast.makeText(getApplicationContext(),"Saved successfully", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -182,33 +182,63 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         super.onStart();
-        /*for (int i=0; i<=100; i++) {
-            mArticleList.add(new ArticleModel("Author", "Title", "Description", "https://www.google.com/", "http://freakonomics.com/wp-content/uploads/2016/05/PC-Games-300x225.jpg", "PublishedAt", "Content"));
-        }*/
+
+        //====================================================| History
+        try {
+            ArrayList<String> arr = new ArrayList<>();
+            for(HistoryModel obj : historyList){
+                arr.add(obj.getHistoryItem());
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, arr); //new String[] {"Belgium", "France", "Italy", "Germany", "Spain"}
+            searchAuto.setAdapter(adapter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         mArticleList.clear();
 
-        Call<ResponseModel> call = RetrofitClient.getInstance().getApi().getNews(ConstantKey.COIN, ConstantKey.DATE, ConstantKey.SORT, ConstantKey.API);
+        //====================================================| API
+
+        //mArticleList.add(new ArticleModel("Author", "Title", "Description", "https://www.google.com/", "http://freakonomics.com/wp-content/uploads/2016/05/PC-Games-300x225.jpg", "PublishedAt", "Content"));
+
+        Call<ResponseModel> call = RetrofitClient.getInstance().getApi().getBbcNews(ConstantKey.SOURCE, ConstantKey.API);
         call.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 if(response.body().getStatus().equals("ok")) {
-                    ArrayList<ArticleModel> list = response.body().getArticles();
-                    Log.d(TAG, new Gson().toJson(response.body().getArticles()));
-                    if(list.size() > 0) {
-                        mAdapter = new RecyclerAdapter(HomeActivity.this, response.body().getArticles());
-                        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-                        mRecyclerView.setAdapter(mAdapter);
-                        mProgress.dismiss();
-                    }
+                    Log.d(TAG, "BBC-NEWS: "+new Gson().toJson(response.body().getArticles()));
+                    mAdapter = new RecyclerAdapter(HomeActivity.this, response.body().getArticles());
+                    mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                    mRecyclerView.setAdapter(mAdapter);
+                    mProgress.dismiss();
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
                 alertDialog(t.getMessage());
             }
         });
+
+        /*Call<ResponseModel> call2 = RetrofitClient.getInstance().getApi().getNews(ConstantKey.COIN, ConstantKey.DATE, ConstantKey.SORT, ConstantKey.API);
+        call2.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                if(response.body().getStatus().equals("ok")) {
+                    Log.d(TAG, "APPLE: "+new Gson().toJson(response.body().getArticles()));
+                    mAppleNews = response.body().getArticles();
+                    for (int i=0; i<mAppleNews.size(); i++) {
+                        if (i%2 != 0) {
+                            mArticleList.add(new ArticleModel(mAppleNews.get(i).getAuthor(), mAppleNews.get(i).getTitle(), mAppleNews.get(i).getDescription(), mAppleNews.get(i).getUrl(), mAppleNews.get(i).getUrlToImage(), mAppleNews.get(i).getPublishedAt(), mAppleNews.get(i).getContent()));
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                alertDialog(t.getMessage());
+            }
+        });*/
+
 
     }
 
