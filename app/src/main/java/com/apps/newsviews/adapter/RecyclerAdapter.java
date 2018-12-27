@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     private ArrayList<ArticleModel> arrayList;
     private Context context;
+    private int lastPosition = -1;
 
     public RecyclerAdapter(Context context, ArrayList<ArticleModel> arrayList) {
         this.context = context;
@@ -60,6 +63,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 //Toast.makeText(context, "You clicked "+model.getAuthor(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        // Here you apply the animation when the view is bound
+        setAnimation(holder.itemView, position);
     }
 
     @Override
@@ -91,6 +97,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             layoutContent = (TextView) itemView.findViewById(R.id.layout_content);
 
             layoutNewsModel = (LinearLayout) itemView.findViewById(R.id.layout_news_model);
+        }
+    }
+
+    //====================================================| Here is the key method to apply the animation
+    private void setAnimation(View viewToAnimate, int position) {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition) {
+            Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
+            viewToAnimate.startAnimation(animation);
+            lastPosition = position;
         }
     }
 
@@ -135,4 +151,5 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     }
                 }).show();
     }
+
 }
