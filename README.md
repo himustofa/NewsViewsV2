@@ -11,16 +11,21 @@ Rokomari Twenty-20 Android Hunt
 
 # Authentication Screen
 Authentication using your email or Gmail
+<br />
 ![3](https://user-images.githubusercontent.com/26080779/50512305-8a7b2880-0abb-11e9-9f54-d1e43031c233.jpg)
 
 # Home Screen
 This is home screen to call newsapi using retrofit for desplaying data in RecyclerView
+<br />
 https://newsapi.org/
+<br />
 ![4](https://user-images.githubusercontent.com/26080779/50512324-9961db00-0abb-11e9-999a-37e07dd24776.jpg)
 
 # Number API Screen
 To call numbersapi using AsyncTask for desplaying data
+<br />
 http://numbersapi.com
+<br />
 ![8](https://user-images.githubusercontent.com/26080779/50512351-b3032280-0abb-11e9-8ff3-19cb580afe74.jpg)
 
 # WebView Screen
