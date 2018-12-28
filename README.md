@@ -1,7 +1,7 @@
 # NewsViewsV2
 Rokomari Twenty-20 Android Hunt 
-\nProject: News Views v2.0.0 
-\n22 December, 2018
+| Project: News Views v2.0.0 
+| 22 December, 2018
 
 # Welcome Screen
 ![1](https://user-images.githubusercontent.com/26080779/50512233-3a9c6180-0abb-11e9-9b98-e0a8b71c273e.jpg)
@@ -10,12 +10,17 @@ Rokomari Twenty-20 Android Hunt
 ![2](https://user-images.githubusercontent.com/26080779/50512446-1ee58b00-0abc-11e9-9011-cf83296deada.jpg)
 
 # Authentication Screen
+Authentication using your email or Gmail
 ![3](https://user-images.githubusercontent.com/26080779/50512305-8a7b2880-0abb-11e9-9f54-d1e43031c233.jpg)
 
 # Home Screen
+This is home screen to call newsapi using retrofit for desplaying data in RecyclerView
+https://newsapi.org/
 ![4](https://user-images.githubusercontent.com/26080779/50512324-9961db00-0abb-11e9-999a-37e07dd24776.jpg)
 
 # Number API Screen
+To call numbersapi using AsyncTask for desplaying data
+http://numbersapi.com
 ![8](https://user-images.githubusercontent.com/26080779/50512351-b3032280-0abb-11e9-8ff3-19cb580afe74.jpg)
 
 # WebView Screen
