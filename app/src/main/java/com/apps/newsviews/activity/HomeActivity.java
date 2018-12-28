@@ -19,11 +19,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -36,13 +33,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apps.newsviews.R;
+import com.apps.newsviews.adapter.MyAdapter;
 import com.apps.newsviews.history.HistoryModel;
 import com.apps.newsviews.history.HistoryService;
 import com.apps.newsviews.model.ArticleModel;
 import com.apps.newsviews.model.ResponseModel;
 import com.apps.newsviews.retrofit.RetrofitClient;
 import com.apps.newsviews.utility.ConstantKey;
-import com.apps.newsviews.adapter.RecyclerAdapter;
 import com.apps.newsviews.utility.SharedPrefManager;
 import com.google.gson.Gson;
 
@@ -62,7 +59,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private Activity context;
     private String userEmail;
     private EditText itemSearch;
-    AutoCompleteTextView searchAuto;
+    private AutoCompleteTextView searchAuto;
     private DatePicker picker;
     private ImageButton numberButton, dateButton, refreshButton;
     private Button go;
@@ -127,6 +124,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //===============================================| RecyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.news_recycler);
+        mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(this, OrientationHelper.VERTICAL, false); //LinearLayoutManager.VERTICAL
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -197,18 +195,26 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         mArticleList.clear();
 
+
         //====================================================| API
-
-        //mArticleList.add(new ArticleModel("Author", "Title", "Description", "https://www.google.com/", "http://freakonomics.com/wp-content/uploads/2016/05/PC-Games-300x225.jpg", "PublishedAt", "Content"));
-
-        Call<ResponseModel> call = RetrofitClient.getInstance().getApi().getNews(ConstantKey.COIN, ConstantKey.DATE, ConstantKey.SORT, ConstantKey.API);
-        //Call<ResponseModel> call = RetrofitClient.getInstance().getApi().getBbcNews(ConstantKey.SOURCE, ConstantKey.API);
-        call.enqueue(new Callback<ResponseModel>() {
+        //Call<ResponseModel> bbc = RetrofitClient.getInstance().getApi().getBbcNews(ConstantKey.SOURCE, ConstantKey.API);
+        Call<ResponseModel> apple = RetrofitClient.getInstance().getApi().getNews(ConstantKey.COIN, ConstantKey.DATE, ConstantKey.SORT, ConstantKey.API);
+        apple.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 if(response.body().getStatus().equals("ok")) {
-                    Log.d(TAG, "BBC-NEWS: "+new Gson().toJson(response.body().getArticles()));
-                    mAdapter = new RecyclerAdapter(HomeActivity.this, response.body().getArticles());
+                    Log.d(TAG, "APPLE: "+new Gson().toJson(response.body().getArticles()));
+                    //mAdapter = new RecyclerAdapter(HomeActivity.this, response.body().getArticles());
+                    ArrayList<ArticleModel> list = response.body().getArticles();
+                    for(int i=0; i<list.size(); i++) {
+                        if (i%2 == 0) {
+                            mArticleList.add(new ArticleModel(ArticleModel.ItemType.ONE_ITEM, list.get(i).getAuthor(), list.get(i).getTitle(), list.get(i).getDescription(), list.get(i).getUrl(), list.get(i).getUrlToImage(), list.get(i).getPublishedAt(), list.get(i).getContent()));
+                        } else {
+                            mArticleList.add(new ArticleModel(ArticleModel.ItemType.TWO_ITEM, list.get(i).getAuthor(), list.get(i).getTitle(), list.get(i).getDescription(), list.get(i).getUrl(), list.get(i).getUrlToImage(), list.get(i).getPublishedAt(), list.get(i).getContent()));
+                        }
+                    }
+
+                    mAdapter = new MyAdapter(HomeActivity.this, mArticleList);
                     mRecyclerView.setItemAnimator(new DefaultItemAnimator());
                     mRecyclerView.setAdapter(mAdapter);
                     mProgress.dismiss();
@@ -219,26 +225,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 alertDialog(t.getMessage());
             }
         });
-
-        /*Call<ResponseModel> call2 = RetrofitClient.getInstance().getApi().getNews(ConstantKey.COIN, ConstantKey.DATE, ConstantKey.SORT, ConstantKey.API);
-        call2.enqueue(new Callback<ResponseModel>() {
-            @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
-                if(response.body().getStatus().equals("ok")) {
-                    Log.d(TAG, "APPLE: "+new Gson().toJson(response.body().getArticles()));
-                    mAppleNews = response.body().getArticles();
-                    for (int i=0; i<mAppleNews.size(); i++) {
-                        if (i%2 != 0) {
-                            mArticleList.add(new ArticleModel(mAppleNews.get(i).getAuthor(), mAppleNews.get(i).getTitle(), mAppleNews.get(i).getDescription(), mAppleNews.get(i).getUrl(), mAppleNews.get(i).getUrlToImage(), mAppleNews.get(i).getPublishedAt(), mAppleNews.get(i).getContent()));
-                        }
-                    }
-                }
-            }
-            @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
-                alertDialog(t.getMessage());
-            }
-        });*/
 
 
     }
