@@ -22,6 +22,10 @@ public final class SQLiteDAO {
             @Override
             public void onCreate(final SQLiteDatabase db) {
                 db.execSQL(ConstantKey.CREATE_HISTORY_TABLE);
+                db.execSQL(ConstantKey.INSERT_HISTORY_DATA1);
+                db.execSQL(ConstantKey.INSERT_HISTORY_DATA2);
+                db.execSQL(ConstantKey.INSERT_HISTORY_DATA3);
+                db.execSQL(ConstantKey.INSERT_HISTORY_DATA4);
             }
             @Override
             public void onUpgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
