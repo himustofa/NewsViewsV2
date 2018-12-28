@@ -27,4 +27,8 @@ public class ConstantKey {
     public final static String CREATE_HISTORY_TABLE = "CREATE TABLE " + HISTORY_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + HISTORY_COLUMN1 + " TEXT, " + HISTORY_COLUMN2 + " TEXT ) ";
     public final static String DROP_HISTORY_TABLE = "DROP TABLE IF EXISTS " + HISTORY_TABLE_NAME + " ";
     public final static String SELECT_HISTORY_TABLE = "SELECT * FROM " + HISTORY_TABLE_NAME;
+    public final static String INSERT_HISTORY_DATA1 = "INSERT INTO history_table (history_item, created_at) VALUES ('69', '2018-12-18 00:05:30.729');";
+    public final static String INSERT_HISTORY_DATA2 = "INSERT INTO history_table (history_item, created_at) VALUES ('42', '2018-12-18 00:05:30.729');";
+    public final static String INSERT_HISTORY_DATA3 = "INSERT INTO history_table (history_item, created_at) VALUES ('12/18', '2018-12-18 00:05:30.729');";
+    public final static String INSERT_HISTORY_DATA4 = "INSERT INTO history_table (history_item, created_at) VALUES ('1/12', '2018-12-18 00:05:30.729');";
 }
