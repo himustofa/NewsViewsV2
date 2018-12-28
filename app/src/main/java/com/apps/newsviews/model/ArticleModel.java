@@ -4,6 +4,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class ArticleModel {
 
+    public enum ItemType {
+        ONE_ITEM, TWO_ITEM;
+    }
+
+    private ItemType type;
+
     @SerializedName("source")
     private SourceModel source;
 
@@ -36,6 +42,25 @@ public class ArticleModel {
         this.urlToImage = urlToImage;
         this.publishedAt = publishedAt;
         this.content = content;
+    }
+
+    public ArticleModel(ItemType type, String author, String title, String description, String url, String urlToImage, String publishedAt, String content) {
+        this.type = type;
+        this.author = author;
+        this.title = title;
+        this.description = description;
+        this.url = url;
+        this.urlToImage = urlToImage;
+        this.publishedAt = publishedAt;
+        this.content = content;
+    }
+
+    public ItemType getType() {
+        return type;
+    }
+
+    public void setType(ItemType type) {
+        this.type = type;
     }
 
     public SourceModel getSource() {
