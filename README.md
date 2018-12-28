@@ -1,7 +1,7 @@
 # NewsViewsV2
 Rokomari Twenty-20 Android Hunt 
-Project: News Views v2.0.0 
-22 December, 2018
+\nProject: News Views v2.0.0 
+\n22 December, 2018
 
 # Welcome Screen
 ![1](https://user-images.githubusercontent.com/26080779/50512233-3a9c6180-0abb-11e9-9b98-e0a8b71c273e.jpg)
