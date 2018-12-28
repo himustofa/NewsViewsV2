@@ -42,13 +42,13 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
 
-    // get the size of the list
+    //====================================================| get the size of the list
     @Override
     public int getItemCount() {
         return (arrayList != null && arrayList.size() > 0 ) ? arrayList.size() : 0;
     }
 
-    // determine which layout to use for the row
+    //====================================================| determine which layout to use for the row
     @Override
     public int getItemViewType(int position) {
         ArticleModel model = arrayList.get(position);
@@ -61,7 +61,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    // specify the row layout file and click for each row
+    //====================================================| specify the row layout file and click for each row
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -76,7 +76,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    // load data in each row element
+    //====================================================| load data in each row element
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
@@ -136,7 +136,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         setAnimation(holder.itemView, pos);
     }
 
-    // Static inner class to initialize the views of rows
+    //====================================================| Static inner class to initialize the views of rows
     static class ViewHolderOne extends RecyclerView.ViewHolder {
         public ImageView layoutUrlToImage;
         public TextView layoutAuthor;
