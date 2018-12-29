@@ -195,7 +195,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         mArticleList.clear();
 
-
         //====================================================| API
         //Call<ResponseModel> bbc = RetrofitClient.getInstance().getApi().getBbcNews(ConstantKey.SOURCE, ConstantKey.API);
         Call<ResponseModel> apple = RetrofitClient.getInstance().getApi().getNews(ConstantKey.COIN, ConstantKey.DATE, ConstantKey.SORT, ConstantKey.API);
@@ -222,11 +221,26 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
+                retrofitOnFailure();
                 alertDialog(t.getMessage());
             }
         });
 
 
+    }
+
+    private void retrofitOnFailure() {
+        for (int i=0; i<=20; i++) {
+            if (i%2 == 0) {
+                mArticleList.add(new ArticleModel(ArticleModel.ItemType.ONE_ITEM,"BBC News", "Australian jihadist stripped of citizenship", "Neil Prakash, currently in jail in Turkey, appeared in propaganda videos for the Islamic State group.", "http://www.bbc.co.uk/news/world-australia-46706710", "https://ichef.bbci.co.uk/news/1024/branded_news/E73D/production/_104979195_mediaitem89600714.jpg", "2018-12-29T03:40:23Z", "Image caption Neil Prakash appeared in IS propaganda videos Australia's most wanted jihadist, Neil Prakash, has been stripped of his Australian citizenship."));
+            } else {
+                mArticleList.add(new ArticleModel(ArticleModel.ItemType.TWO_ITEM,"BBC News", "Indonesian volcano's lost stature", "Satellite images indicate Anak Krakatau has now lost over two-thirds of its height and volume.", "http://www.bbc.co.uk/news/science-environment-46707731", "https://ichef.bbci.co.uk/news/1024/branded_news/13C5B/production/_104978908_051355469.jpg", "2018-12-29T01:13:37Z", "Image copyright Reuters Image caption Radar satellites are one of the few ways of assessing the volcano currently The scale of the dramatic collapse of the Indonesian volcano that led to last Saturday's devastating tsunami in the Sunda Strait is becoming clea…"));
+            }
+            mAdapter = new MyAdapter(HomeActivity.this, mArticleList);
+            mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+            mRecyclerView.setAdapter(mAdapter);
+            mProgress.dismiss();
+        }
     }
 
     //====================================================| Search using date
